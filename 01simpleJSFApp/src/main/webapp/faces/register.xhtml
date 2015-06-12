@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Employee registration app</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h2>Employee registration app</h2>
+		<h4>Provide the below details:</h4>
+		<table>
+			<tr>
+				<td>First Name:</td>
+				<td><h:inputText label="First Name" id="fname"
+						value="#{employee.firstame}" required="true" /> <h:message
+						for="fname" /></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><h:inputText label="Last Name" id="lname"
+						value="#{employee.lastname}" required="true" /> <h:message
+						for="lname" /></td>
+			</tr>
+			<tr>
+				<td>Sex:</td>
+				<td><h:selectOneRadio label="Sex" id="sex"
+						value="#{employee.sex}" required="true">
+						male 	<f:selectItem itemLable="Male" itemValue="male" />
+						female	<f:selectItem itemLable="Female" itemValue="female" />
+					</h:selectOneRadio> <h:message for="sex" /></td>
+			</tr>
+			<tr>
+				<td>Date of Birth:</td>
+				<td><h:inputText label="Date of Birth" id="dob"
+						value="#{employee.dob}" required="true">
+						<f:convertDateTime pattern="MM-dd-yy" />
+					</h:inputText> (mm-dd-yy) <h:message for="dob" /></td>
+			</tr>
+			<tr>
+				<td>Email Address:</td>
+				<td><h:inputText label="Email Address" id="email"
+						value="#{employee.email}" required="true"
+						validator="#{employee.checkEmail}" /> <h:message for="email" />
+				</td>
+			</tr>
+			<tr>
+				<td>Service Level:</td>
+				<td><h:selectOneMenu label="Service Level"
+						value="#{employee.department}">
+						<f:selectItem itemLabel="Computer Science" itemValue="Computer Science" />
+						<f:selectItem itemLabel="Information Science" itemValue="Information Science" />
+						<f:selectItem itemLabel="Mathematics" itemValue="Mathematics" />
+					</h:selectOneMenu></td>
+			</tr>
+		</table>
+		<p>
+			<h:messages />
+		</p>
+		<p>
+			<h:commandButton value="Register" action="confirm" />
+		</p>
+	</h:form>
+</h:body>
+</html>
